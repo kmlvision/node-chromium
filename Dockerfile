@@ -1,6 +1,6 @@
 FROM node:10-stretch
 
-LABEL MAINTAINER="KML Vision <devops@kmlvision.com>"
+LABEL MAINTAINER="KML VISION, devops@kmlvision.com"
 
 # install chromium and export the binary file for testing
 RUN apt-get update -qq && \
