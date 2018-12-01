@@ -1,4 +1,4 @@
-FROM node:10-stretch
+FROM node:lts-stretch
 
 LABEL MAINTAINER="KML VISION, devops@kmlvision.com"
 
