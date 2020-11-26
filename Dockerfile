@@ -5,10 +5,12 @@ FROM node:lts-stretch AS builder
 LABEL MAINTAINER="KML VISION, devops@kmlvision.com"
 
 COPY --from=yaml-reader /usr/bin/yq /usr/bin/yq
+# simple bash script to get latest chromium binary (see https://github.com/scheib/chromium-latest-linux)
+COPY update.sh /update.sh
 
-# install chromium deps
-RUN apt update -qq && \
-    apt install -qq -y \
+# install chromium OS level dependencies
+RUN apt-get update -qq && \
+    apt-get install -qq -y \
 	libasound2 \
 	libatk1.0-0 \
 	libatk-bridge2.0-0 \
@@ -68,15 +70,14 @@ RUN apt update -qq && \
 	libxtst6 \
 	x11-utils \
 	xdg-utils \
-	zlib1g \
-    && apt clean && \
+	zlib1g && \
+    apt-get clean && \
     rm -rf /var/cache/apt/archives/
 
-# install specific chromium version and export the binary file for testing
-# for chromium updates see README.md
-ENV CHROMIUM_DOWNLOAD_LOCATION=https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2F664981%2Fchrome-linux.zip?generation=1559265534319509&alt=media
-ENV CHROMIUM_VERSION=76.0.3809.100
-ENV CHROME_BIN=/opt/chrome-linux/chrome
-RUN wget -O chromium-latest-stable.zip "$CHROMIUM_DOWNLOAD_LOCATION" && \
-	unzip -d /opt chromium-latest-stable.zip && \
-	ln -s "$CHROME_BIN" /usr/bin/chromium
+# install latest chromium version
+# binary will be available under /usr/bin/chromium
+RUN chmod +x /update.sh && \
+    cd / && \
+    ./update.sh && \
+    ln -s "/latest/chrome" /usr/bin/chromium && \
+    chromium --version
