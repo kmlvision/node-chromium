@@ -8,9 +8,9 @@ the latest chromium version on each docker image build using the update script
 from https://github.com/scheib/chromium-latest-linux.
 For convenience we also provide a simple yaml reader cli (see https://github.com/mikefarah/yq).
 
-Current preinstalled Chromium Version: 114.0.5732.0
-Current preinstalled Node version: v18.16.0
-Current preinstalled NPM version: 9.5.1
+* Current preinstalled Chromium Version: 131.0.6775.0
+* Current preinstalled Node version: v20.18.0
+* Current preinstalled NPM version: 10.8.2
 
 The docker images will be tagged with the Chrome Version as they are built.
 
@@ -25,5 +25,5 @@ For future releases we follow the following docker tag policy:
 * full tag containing chromium, node and debian
   version: `chromium[chromium-version]_node[node-major-version]_debian[debian-major-version]`
 
-We still maintain the default `latest` tag but we want to encourage our developers to explicitly state the
+We still maintain the default `latest` tag, but we want to encourage our developers to explicitly state the
 node version they want to use.
