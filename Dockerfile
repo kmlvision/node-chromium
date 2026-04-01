@@ -1,8 +1,8 @@
 # use a convenient lightweight YAML reader
 FROM mikefarah/yq:latest AS yaml-reader
 
-FROM node:20-bookworm AS builder
-LABEL MAINTAINER="KML VISION, devops@kmlvision.com"
+FROM node:22-bookworm AS builder
+LABEL MAINTAINER="KOLAIDO, devops@kolaido.com"
 
 COPY --from=yaml-reader /usr/bin/yq /usr/bin/yq
 # simple bash script to get latest chromium binary (see https://github.com/scheib/chromium-latest-linux)
