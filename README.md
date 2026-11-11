@@ -9,8 +9,8 @@ from https://github.com/scheib/chromium-latest-linux.
 For convenience we also provide a simple yaml reader cli (see https://github.com/mikefarah/yq).
 
 * Current preinstalled Chromium Version: 160.0.8156.0 
-* Current preinstalled Node version: v24.22.2
-* Current preinstalled NPM version: 11.19.1
+* Current preinstalled Node version: v26.13.0
+* Current preinstalled NPM version: 11.20.0
 
 The docker images will be tagged with the Chrome Version as they are built.
 

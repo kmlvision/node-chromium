@@ -1,7 +1,7 @@
 # use a convenient lightweight YAML reader
 FROM mikefarah/yq:latest AS yaml-reader
 
-FROM node:24-trixie AS builder
+FROM node:26-trixie AS builder
 LABEL MAINTAINER="KOLAIDO, devops@kolaido.com"
 
 COPY --from=yaml-reader /usr/bin/yq /usr/bin/yq
